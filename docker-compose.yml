@@ -1,7 +1,7 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
-    ticto:
+    laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.1
             dockerfile: Dockerfile
@@ -42,15 +42,6 @@ services:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
-    mailhog:
-        image: mailhog/mailhog
-        logging:
-            driver: 'none'  # disable saving logs
-        ports:
-            - 1025:1025 # smtp server
-            - 8025:8025 # web ui
-        networks:
-            - sail-ticto
 networks:
     sail-ticto:
         driver: bridge
